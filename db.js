@@ -1,6 +1,6 @@
 var Mongoose = require('mongoose');
 
-var dbURL = process.env.DATABASE_URL || 'mongodb://127.0.0.1';
+var dbURL = 'mongodb://golemuser:Gol3m007@ds061360.mongolab.com:61360/heroku_app32285548' || 'localhost';
 
 // connect to the db
 Mongoose.connect(dbURL+'/find-my-car-one');

@@ -1,7 +1,7 @@
 var Hapi = require('hapi');
 
-var port = Number(process.env.PORT || 8000);
-var host = Number(process.env.HOST || 'localhost');
+var port = Number(process.env.PORT);
+var host = Number(process.env.HOST);
 
 var server = new Hapi.Server(host, port);
 
