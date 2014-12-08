@@ -20,11 +20,7 @@ var Schema = new Mongoose.Schema({
     numberPlate:  {  // TODO: create index on this
         type: String,
         required: false
-    },
-    guessedCars:  {
-        type: Array,
-        required: false
-    },
+    }
 });
 
 module.exports = Mongoose.model('Spot', Schema);

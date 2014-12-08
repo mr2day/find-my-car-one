@@ -135,24 +135,7 @@ exports.register = function(plugin, options, next) {
                         return;
                     }
 
-                    var GuessedCarModel = require('../../models/guessedCar');
-                    GuessedCarModel.find({ spotId: dto._id }, function(err, guessedCars) {
-
-                        if (err){
-                            console.log(err);
-                            reply(err);
-                            return;
-                        }
-
-                        if (guessedCars && guessedCars.length > 0) {
-                            for (var i = guessedCars.length - 1; i >= 0; i--) {
-                                
-                                dto.guessedCars.push(guessedCars[i]);
-                            }
-                        }
-
-                        reply(dto);
-                    });
+                    reply(dto);
                 });
             },
             validate: {
