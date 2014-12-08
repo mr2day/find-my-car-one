@@ -12,7 +12,6 @@ module.exports = {
         { 'name': 'garage', 'label': 'admin' },
         { 'name': 'price', 'label': 'admin' },
         { 'name': 'spot', 'label': 'admin' },
-        { 'name': 'guessedCar', 'label': 'admin' },
 
         // api
         { 'name': 'login', 'label': 'api' },

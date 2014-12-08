@@ -14,7 +14,7 @@ exports.register = function(plugin, options, next) {
         path: '/'+pluginName,
         method: 'POST',
         config: {
-            auth: false,
+            auth: 'adminBasic',
             handler: function (request, reply) {
                     
                 // validate uniqueness of name

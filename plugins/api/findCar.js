@@ -11,7 +11,6 @@ exports.register = function(plugin, options, next) {
 
     // require other models
     var SpotModel = require('../../models/spot');
-    var GuessedCarModel = require('../../models/guessedCar');
 
     // Routes:
     // Find a user's car in a garage
@@ -31,38 +30,27 @@ exports.register = function(plugin, options, next) {
                 });
 
                 // search spots for number plate
-                SpotModel.find({ occupied: true, numberPlate: request.params.numberPlate }, function(err, sureSpots) {
+                SpotModel.find({ occupied: true, numberPlate: request.params.numberPlate }, function(err, spots) {
                     if (err) {
                         console.log(err);
                         reply(err);
                         return;
                     }
-                    if (sureSpots === null || sureSpots.length === 0 || sureSpots.length > 1) {  // not found for sure
-                        // search amongst guessed number plates
-                        GuessedCarModel.find({ numberPlate: request.params.numberPlate }, function(err, guessedCars) {
-                            
-                            if (err) {
-                                console.log(err);
-                                reply(err);
-                                return;
-                            }
-                            if (guessedCars !== null && guessedCars.length > 0) { // finds guessed cars
-                                
-                                for (var i = guessedCars.length - 1; i >= 0; i--) {
-                                    dto.carPhotos.push(guessedCars[i]);
-                                }
-                                reply(dto);
-                                return;
-                            }
-                            else { // didn't find anything
-                                dto.notFoundMessage = 'The car was not found. Please contact a parking lot operator';  // TODO: translate this
-                                reply(dto);
-                                return;
-                            }
-                        });
+                    if (spots === null || spots.length === 0) {  // not found for sure
+                        // call search server
+                        reply('Not found, call search server');
+                        return;
+                    }
+                    if (spots.length > 1) {
+                        // found more than one
+                        for (var i = spots.length - 1; i >= 0; i--) {
+                            dto.carPhotos.push(spots[i].carPhotoPath);
+                        }
+                        reply(dto);
+                        return;
                     }
                     else { // found the number plate in a spot for sure
-                        var spot = sureSpots[0];
+                        var spot = spots[0];
                         
                         // find the map of the garage
                         var GarageModel = require('../../models/garage');
