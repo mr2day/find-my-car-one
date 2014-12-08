@@ -14,7 +14,7 @@ exports.register = function(plugin, options, next) {
             auth: false,
             handler: function (request, reply) {
             
-                reply('Welcome to the Find-My-Car test server!');
+                reply('Welcome to the Find-My-Car badass server!');
             }
         }
     });
