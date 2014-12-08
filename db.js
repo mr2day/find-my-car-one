@@ -1,7 +1,7 @@
 var Mongoose = require('mongoose');
 
-var dbURL = 'mongodb://golemuser:Gol3m007@ds061360.mongolab.com:61360/heroku_app32285548' || 'localhost';
-//var dbURL = 'mongodb://golemserver.cloudapp.net';
+//var dbURL = 'mongodb://golemuser:Gol3m007@ds061360.mongolab.com:61360/heroku_app32285548' || 'localhost';
+var dbURL = 'mongodb://golemserver.cloudapp.net';
 
 // connect to the db
 Mongoose.connect(dbURL+'/find-my-car-one');
