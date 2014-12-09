@@ -6,9 +6,6 @@ var pluginName = 'findCar';
 // plugin
 exports.register = function(plugin, options, next) {
 
-    // require plugin's base model
-    var Model = require('../../models/findCar');
-    var responseDto = new Model();
     // require other models
     var SpotModel = require('../../models/spot');
 
@@ -25,8 +22,7 @@ exports.register = function(plugin, options, next) {
                 SpotModel.find({ occupied: true, numberPlate: request.params.numberPlate }, function(err, spots) {
                     if (err) {
                         console.log(err);
-                        responseDto.errors.push(err);
-                        reply(responseDto);
+                        reply(err);
                         return;
                     }
                     if (spots === null || spots.length === 0) {  // not found for sure
@@ -36,20 +32,17 @@ exports.register = function(plugin, options, next) {
                         SpotModel.find({ occupied: true }).limit(3).exec(function(err, spots) {
                             if (err) {
                                 console.log(err);
-                                responseDto.errors.push(err);
-                                reply(responseDto);
+                                reply(err);
                                 return;
                             }
                             else {
-                                responseDto.spots = spots;
-                                reply(responseDto);
+                                reply(spots);
                                 return;
                             }
                         });
                     }
                     else { // found
-                        responseDto.spots = spots;
-                        reply(responseDto);
+                        reply(spots);
                         return;
                     }
                 });
