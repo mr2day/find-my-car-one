@@ -1,7 +1,7 @@
 var Mongoose = require('mongoose');
 
 var Schema = new Mongoose.Schema({
-    error: {
+    errors: {
         type: Array,
         required: false
     },

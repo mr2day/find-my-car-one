@@ -25,7 +25,7 @@ exports.register = function(plugin, options, next) {
                 SpotModel.find({ occupied: true, numberPlate: request.params.numberPlate }, function(err, spots) {
                     if (err) {
                         console.log(err);
-                        responseDto.error.push(err);
+                        responseDto.errors.push(err);
                         reply(responseDto);
                         return;
                     }
@@ -36,7 +36,7 @@ exports.register = function(plugin, options, next) {
                         SpotModel.find({ occupied: true }).limit(3).exec(function(err, spots) {
                             if (err) {
                                 console.log(err);
-                                responseDto.error.push(err);
+                                responseDto.errors.push(err);
                                 reply(responseDto);
                                 return;
                             }
