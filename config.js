@@ -16,5 +16,6 @@ module.exports = {
         // api
         { 'name': 'login', 'label': 'api' },
         { 'name': 'findCar', 'label': 'api' },
+        { 'name': 'garageMap', 'label': 'api' },
     ]
 };

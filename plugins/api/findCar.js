@@ -1,5 +1,4 @@
 var Joi = require('joi');
-Joi.objectId = require('joi-objectid');
 
 var pluginName = 'findCar';
 
