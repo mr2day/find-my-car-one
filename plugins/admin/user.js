@@ -27,23 +27,23 @@ exports.register = function(plugin, options, next) {
                             reply('A user is already registered with this email!');
                             return;
                         }
+
+                        var dto = new Model({
+                            email: request.payload.email,
+                            firstName: request.payload.firstName,
+                            lastName: request.payload.lastName,
+                            password: request.payload.password,
+                        });
+
+                        dto.save(function(err, newDto) {
+                            if (err) {
+                                reply(err);
+                                return;
+                            }
+
+                            reply(newDto);
+                        });
                     });
-
-                var dto = new Model({
-                    email: request.payload.email,
-                    firstName: request.payload.firstName,
-                    lastName: request.payload.lastName,
-                    password: request.payload.password,
-                });
-
-                dto.save(function(err, newDto) {
-                    if (err) {
-                        reply(err);
-                        return;
-                    }
-
-                    reply(newDto);
-                });
             },
             validate: {
                 payload: {
@@ -63,7 +63,7 @@ exports.register = function(plugin, options, next) {
         config: {
             auth: 'adminBasic',
             handler: function (request, reply) {
-            
+                
                 Model.find(function(err, dtos) {
                     if (err) {
                         reply(err);
@@ -155,7 +155,7 @@ exports.register = function(plugin, options, next) {
                         return;
                     }
 
-                    reply('success');
+                    reply('User deleted successfully');
                 });
             },
             validate: {

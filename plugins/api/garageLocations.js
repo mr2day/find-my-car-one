@@ -24,7 +24,7 @@ exports.register = function(plugin, options, next) {
                         reply(err);
                         return;
                     }
-                    if (dtos === null || dtos === 'undefined') {  // not found for sure
+                    if (dtos === null || dtos === undefined) {  // not found for sure
                         
                         reply('An error has occured. We are working to repair it.');
                         return;

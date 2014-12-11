@@ -14,8 +14,8 @@ var Schema = new Mongoose.Schema({
     	type: String, 
         required: true
     },
-    garageId: {
-        type: String,
+    spotId: {
+        type: String, 
         required: false
     }
 });

@@ -18,5 +18,6 @@ module.exports = {
         { 'name': 'findCar', 'label': 'api' },
         { 'name': 'garageMap', 'label': 'api' },
         { 'name': 'garageLocations', 'label': 'api' },
+        { 'name': 'registeredCars', 'label': 'api' },
     ]
 };

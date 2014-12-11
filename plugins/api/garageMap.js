@@ -10,7 +10,7 @@ exports.register = function(plugin, options, next) {
     var GarageModel = require('../../models/garage');
 
     // Routes:
-    // Find a user's car in a garage
+    // Find a garage's map
     plugin.route({
         path: '/'+pluginName+'/{garageId}',
         method: 'GET',
@@ -25,7 +25,7 @@ exports.register = function(plugin, options, next) {
                         reply(err);
                         return;
                     }
-                    if (mapPath === null || mapPath === 'undefined') {  // not found for sure
+                    if (mapPath === null || mapPath === undefined) {  // not found for sure
                         
                         reply('Garage map not found');
                         return;

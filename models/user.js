@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
-var generateClientId = require('../helpers/generate-client-id');
 
 var Schema = new mongoose.Schema({
     email: {
@@ -19,20 +18,12 @@ var Schema = new mongoose.Schema({
     lastName: {
         type: String,
         required: true
-    }, 
-    clientId: {
-        type: String,
-        required: false
     }
 });
 
 // execute before each objectModel.save() call
 Schema.pre('save', function(next) {
     var self = this;
-
-    // generate clientId
-    var clientId = generateClientId(64);
-    self.clientId = clientId;
 
     // break out if the password hasn't changed
     if (!self.isModified('password')) 
