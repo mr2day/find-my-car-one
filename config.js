@@ -19,5 +19,6 @@ module.exports = {
         { 'name': 'garageMap', 'label': 'api' },
         { 'name': 'garageLocations', 'label': 'api' },
         { 'name': 'registeredCars', 'label': 'api' },
+        { 'name': 'showSpot', 'label': 'api' },
     ]
 };

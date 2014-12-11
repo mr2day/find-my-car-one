@@ -38,6 +38,7 @@ exports.register = function(plugin, options, next) {
                         label: request.payload.label,
                         carPhotoPath: request.payload.carPhotoPath,
                         numberPlate: request.payload.numberPlate,
+                        ticketCode: request.payload.ticketCode,
                     });
 
                     dto.save(function(err, newDto) {
@@ -58,6 +59,7 @@ exports.register = function(plugin, options, next) {
                     label: Joi.string(),
                     carPhotoPath: Joi.string(),
                     numberPlate: Joi.string(),
+                    ticketCode: Joi.string(),
                 }
             }
         }
@@ -165,6 +167,7 @@ exports.register = function(plugin, options, next) {
                     if (request.payload.label) dto.label = request.payload.label;
                     if (request.payload.carPhotoPath) dto.carPhotoPath = request.payload.carPhotoPath;
                     if (request.payload.numberPlate) dto.numberPlate = request.payload.numberPlate;
+                    if (request.payload.ticketCode) dto.ticketCode = request.payload.ticketCode;
 
                     dto.save(function(err, newDto) {
                         if (err) {
@@ -185,6 +188,7 @@ exports.register = function(plugin, options, next) {
                     label: Joi.string(),
                     carPhotoPath: Joi.string(),
                     numberPlate: Joi.string(),
+                    ticketCode: Joi.string(),
                 }
             }
         }

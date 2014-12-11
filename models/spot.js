@@ -20,6 +20,10 @@ var Schema = new Mongoose.Schema({
     numberPlate:  {  // TODO: create index on this
         type: String,
         required: false
+    },
+    ticketCode: {  // TODO: create index on this
+        type: String,
+        required: false
     }
 });
 
