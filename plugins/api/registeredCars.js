@@ -70,7 +70,7 @@ exports.register = function(plugin, options, next) {
                                             cars[k].spotId = spots[j].id;
                                         }
                                         else {
-                                            cars[k].spotId = null;
+                                            cars[k].spotId = 'N';
                                         }
                                     }
                                 }
